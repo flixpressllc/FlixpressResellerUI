@@ -6,7 +6,7 @@ module.exports = {
       this.onChange(true)
       return
     }
-    pretendRequest(email, pass, (res) => {
+    request(email, pass, (res) => {
       if (res.authenticated) {
         localStorage.token = res.token
         if (cb) cb(true)
@@ -35,15 +35,26 @@ module.exports = {
   onChange() {}
 }
 
-function pretendRequest(email, pass, cb) {
-  setTimeout(() => {
-    if (email === 'joe@example.com' && pass === 'password1') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
-      })
-    } else {
-      cb({ authenticated: false })
+function request(email, pass, cb) {
+  window.fetch('http://auth.specialapp.net/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: "username=" + encodeURI(email) + "&password=" + encodeURI(pass) + "&grant_type=password"
+
+  }).then(function(response){
+    if (response.ok === false) {
+      throw new Error('Bad login information.');
     }
-  }, 0)
+    return response.json();
+  }).then(function(j){
+    cb({
+      authenticated: true,
+      token: j.access_token
+    });
+  }).catch(function(error){
+    console.error(error);
+    cb({ authenticated: false })
+  })
 }
