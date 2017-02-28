@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const About = React.createClass({
-  render() {
-    return <h1>About</h1>
-  }
-})
-
-export default  About
+export default function About (props) {
+  return <h1>About</h1>;
+}

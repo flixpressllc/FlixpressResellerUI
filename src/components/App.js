@@ -4,23 +4,26 @@ import './App.scss';
 
 import auth from '../utils/auth';
 
-const App = React.createClass({
-  getInitialState() {
-    return {
+class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
       loggedIn: auth.loggedIn()
-    }
-  },
+    };
+
+    this.updateAuth = this.updateAuth.bind(this);
+  }
 
   updateAuth(loggedIn) {
     this.setState({
       loggedIn
     })
-  },
+  }
 
   componentWillMount() {
-    auth.onChange = this.updateAuth
-    auth.login()
-  },
+    auth.onChange = this.updateAuth;
+    auth.login();
+  }
 
   render() {
     return (
@@ -40,9 +43,6 @@ const App = React.createClass({
       </div>
     )
   }
-})
-
-
-
+}
 
 export default App;

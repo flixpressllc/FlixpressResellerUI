@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { browserHistory, Router, Route } from 'react-router'
 import auth from './utils/auth';
 

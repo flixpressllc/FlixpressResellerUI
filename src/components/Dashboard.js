@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import auth from '../utils/auth';
 
-const Dashboard = React.createClass({
+class Dashboard extends Component {
   render() {
-    const token = auth.getToken()
+    const token = auth.getToken();
 
     return (
       <div>
@@ -13,6 +13,6 @@ const Dashboard = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Dashboard
