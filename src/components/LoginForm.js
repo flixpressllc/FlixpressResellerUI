@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router'
 import auth from '../utils/auth';
 
-
-class Login extends Component {
+class LoginForm extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -47,4 +46,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(LoginForm);

@@ -2,11 +2,11 @@ import React from 'react';
 import { browserHistory, Router, Route } from 'react-router'
 import auth from './utils/auth';
 
-import App from './components/App';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Dashboard from './components/Dashboard';
-import About from './components/About';
+import App from './routes/App';
+import Login from './routes/Login';
+import Logout from './routes/Logout';
+import Dashboard from './routes/Dashboard';
+import About from './routes/About';
 
 function requireAuth(nextState, replace) {
   if (!auth.loggedIn()) {
