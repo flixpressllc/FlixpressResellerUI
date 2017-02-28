@@ -22,7 +22,6 @@ class App extends Component {
 
   componentWillMount() {
     auth.onChange = this.updateAuth;
-    auth.login();
   }
 
   render() {
